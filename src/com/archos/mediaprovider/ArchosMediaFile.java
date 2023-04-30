@@ -46,7 +46,7 @@ public class ArchosMediaFile {
     public static final int FILE_TYPE_IMY     = 13;
     private static final int FIRST_MIDI_FILE_TYPE = FILE_TYPE_MID;
     private static final int LAST_MIDI_FILE_TYPE = FILE_TYPE_IMY;
-   
+
     // Video file types
     public static final int FILE_TYPE_MP4     = 21;
     public static final int FILE_TYPE_M4V     = 22;
@@ -78,7 +78,7 @@ public class ArchosMediaFile {
     public static final int FILE_TYPE_WEBP    = 36;
     private static final int FIRST_IMAGE_FILE_TYPE = FILE_TYPE_JPEG;
     private static final int LAST_IMAGE_FILE_TYPE = FILE_TYPE_WEBP;
-   
+
     // Playlist file types
     public static final int FILE_TYPE_M3U      = 41;
     public static final int FILE_TYPE_PLS      = 42;
@@ -142,13 +142,13 @@ public class ArchosMediaFile {
     public static class MediaFileType {
         public final int fileType;
         public final String mimeType;
-        
+
         MediaFileType(int fileType, String mimeType) {
             this.fileType = fileType;
             this.mimeType = mimeType;
         }
     }
-    
+
     private static HashMap<String, MediaFileType> sFileTypeMap
             = new HashMap<String, MediaFileType>();
 
@@ -171,7 +171,7 @@ public class ArchosMediaFile {
         addFileType("AAC", FILE_TYPE_AAC, "audio/aac");
         addFileType("AAC", FILE_TYPE_AAC, "audio/aac-adts");
         addFileType("MKA", FILE_TYPE_MKA, "audio/x-matroska");
- 
+
         addFileType("MID", FILE_TYPE_MID, "audio/midi");
         addFileType("MIDI", FILE_TYPE_MID, "audio/midi");
         addFileType("XMF", FILE_TYPE_MID, "audio/midi");
@@ -181,7 +181,7 @@ public class ArchosMediaFile {
         addFileType("RTX", FILE_TYPE_MID, "audio/midi");
         addFileType("OTA", FILE_TYPE_MID, "audio/midi");
         addFileType("MXMF", FILE_TYPE_MID, "audio/midi");
-        
+
         addFileType("MPEG", FILE_TYPE_MP4, "video/mpeg");
         addFileType("MPG", FILE_TYPE_MP4, "video/mpeg");
         addFileType("MP4", FILE_TYPE_MP4, "video/mp4");
@@ -204,7 +204,7 @@ public class ArchosMediaFile {
         addFileType("BMP", FILE_TYPE_BMP, "image/x-ms-bmp");
         addFileType("WBMP", FILE_TYPE_WBMP, "image/vnd.wap.wbmp");
         addFileType("WEBP", FILE_TYPE_WEBP, "image/webp");
- 
+
         addFileType("M3U", FILE_TYPE_M3U, "audio/x-mpegurl");
         addFileType("M3U", FILE_TYPE_M3U, "application/x-mpegurl");
         addFileType("PLS", FILE_TYPE_PLS, "audio/x-scpls");
@@ -310,7 +310,9 @@ public class ArchosMediaFile {
             || (fileType >= FIRST_VIDEO_FILE_TYPE2 &&
                 fileType <= LAST_VIDEO_FILE_TYPE2)
             || (fileType >= FIRST_VIDEO_FILE_TYPEA &&
-                fileType <= LAST_VIDEO_FILE_TYPEA);
+                fileType <= LAST_VIDEO_FILE_TYPEA)
+	    || (fileType >= FIRST_PLAYLIST_FILE_TYPE &&
+		fileType <= LAST_PLAYLIST_FILE_TYPE);
     }
 
     public static boolean isSubtitleFileType(int fileType) {
