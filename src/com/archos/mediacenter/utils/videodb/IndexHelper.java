@@ -172,14 +172,17 @@ public class IndexHelper implements LoaderManager.LoaderCallbacks<Cursor>, Loade
             }
             XmlDb xmlDb = null;
             if (DBG) Log.d(TAG, "mExportDb: "+mExportDb+" - isLocal: "+FileUtils.isLocal(mVideoInfo.uri)+" isSlowRemote "+FileUtils.isSlowRemote(mVideoInfo.uri));
-            if (mExportDb &&
-                    !FileUtils.isLocal(mVideoInfo.uri)&&
-                    mVideoInfo.duration>0
-                    &&UriUtils.isCompatibleWithRemoteDB(mVideoInfo.uri)) { //save on network
-                if (xmlDb == null)
-                    xmlDb = XmlDb.getInstance();
-                xmlDb.writeXmlRemote(mVideoInfo);
-            }
+            if (xmlDb == null)
+                xmlDb = XmlDb.getInstance();
+            xmlDb.writeXmlRemote(mVideoInfo);
+            //if (mExportDb &&
+            //        !FileUtils.isLocal(mVideoInfo.uri)
+            //        &&mVideoInfo.duration>0
+            //        &&UriUtils.isCompatibleWithRemoteDB(mVideoInfo.uri)) { //save on network
+            //    if (xmlDb == null)
+            //        xmlDb = XmlDb.getInstance();
+            //    xmlDb.writeXmlRemote(mVideoInfo);
+            //}
             return null;
         }
     }

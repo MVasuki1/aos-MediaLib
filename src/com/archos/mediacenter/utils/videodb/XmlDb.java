@@ -536,6 +536,19 @@ public class XmlDb  implements Callback {
         if(parentUri!=null && parentUri.getPath()!=null && !parentUri.getPath().isEmpty()){
             //calculating percent
             double percent = (float) videoFile.resume/(float)videoFile.duration * 100.0;
+	    // For Network Stream m3u8 files that have duration as 0
+	    // Assume a default duration of 1h45m and calculate percent watched
+	    if(percent > 100){
+		percent = (float) videoFile.resume/6300000.0 * 100.0;
+	    }
+
+	    // Just values obtained from observation
+	    if((int)videoFile.resume == -2){
+	    	percent = 100.0;
+	    } else if((int)videoFile.resume == -1){
+	    	percent = 0.0;
+	    }
+
             Uri xml = Uri.withAppendedPath(parentUri, "."+FileUtils.getName(videoFile.uri)+"."+((int)percent)+FILE_NAME);
             return xml;
         }
